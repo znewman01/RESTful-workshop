@@ -1,1 +1,8 @@
 Content for RESTful workshop by ADICU
+
+rest.odp: presentation for workshop. overview of basic concepts, with breaks to try things out
+http-client.py: examples of using Python as an HTTP client
+http-client.sh: examples of using cURL as an HTTP client
+http-echo.py: basic server that echoes incoming HTTP requests
+http-server.py: basic RESTful API implementation
+http-server-skeleton.py: basic HTTP request handler--fill in the blanks to make a RESTful API

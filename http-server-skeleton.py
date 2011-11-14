@@ -53,63 +53,8 @@ serversocket.listen(5)
 users = []
 
 def process_request(method, path, body):
-    if method == 'GET':
-        if path == '/users': 
-            return str(users)
-        elif path.startswith('/users'):
-            return str([x for x in users if x[0] == path[len('/users/'):]])
-        else:
-            return 'Bad URL'
-    elif method == 'POST':
-        if path == '/users/new':
-            name = body['name']
-            password = body['password']
-            if len([x for x in users if x[0] == name]) > 0:
-                return 'ERROR: User already exists'
-            users.append([name, password, 0])
-            return 'User {0} successfully created.'.format(name)
-        elif path == '/users/changepassword':
-            name = body['name']
-            password = body['password']
-            passwordnew = body['passwordnew']
-            match_users = [x for x in users if x[0] == name]
-            if len(match_users) == 0:
-                return 'ERROR: No such user'
-            user = match_users[0]
-            if password != user[1]:
-                return 'ERROR: Bad password'
-            user[1] = passwordnew
-            return 'User {0}\'s password successfully changed.'.format(name)
-        elif path == '/users/login':
-            name = body['name']
-            password = body['password']
-            match_users = [x for x in users if x[0] == name]
-            if len(match_users) == 0:
-                return 'ERROR: No such user'
-            user = match_users[0]
-            if password != user[1]:
-                return 'ERROR: Bad password'
-            user[2] += 1
-            return 'User {0} successfully logged in. '.format(name) + \
-                'Login count: {0}'.format(user[2])
-        else:
-            return 'Bad URL'
-    elif method == 'DELETE':
-        if path == '/users/delete':
-            name = body['name']
-            password = body['password']
-            match_users = [x for x in users if x[0] == name]
-            if len(match_users) == 0:
-                return 'ERROR: No such user'
-            user = match_users[0]
-            if password != user[1]:
-                return 'ERROR: Bad password'
-            users.remove(user)
-            return 'User {0} successfully deleted.'.format(name)
-        else:
-            return 'Bad URL'
-    else:
-        return 'Bad Method'
+    # left as an exercise to the viewer!
+    pass
 
 ###################
 # Main server loop
